@@ -16,9 +16,6 @@ app.use('/public', express.static('public'));
 
 var cats = require('./cat.js')(app);
 
-
-mongoose.connect('mongodb://localhost/cats');
-
 var server = app.listen(3000, function() {
 	console.log('Server running');
 });
