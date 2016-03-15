@@ -1,22 +1,96 @@
-    1  npm
+    1  npm install http-server -g
     2  cd /c/Users/benca/OneDrive/Node/
-    3  npm init -y
-    4  touch index.js
-    5  node -v
-    6  node
-    7  node index.js 
-    8  node index.js 
-    9  node index.js 
-   10  npm install --save express
-   11  touch .gitignore
-   12  guit status
-   13  git status
-   14  git init
-   15  git status
-   16  git status
-   17  git status
-   18  npm-install-missing
-   19  npm install -g npm-install0missing
-   20  npm install -g npm-install-missing
-   21  npm-install-missing
-   22  history > cmd.txt
+    3  http-server -o -cors
+    4  http-server -o -cors
+    5  mongo
+    6  mongod
+    7  exit
+    8  npm
+    9  cd /c/Users/benca/OneDrive/Node/
+   10  npm init -y
+   11  touch index.js
+   12  node -v
+   13  node
+   14  node index.js 
+   15  node index.js 
+   16  node index.js 
+   17  npm install --save express
+   18  touch .gitignore
+   19  guit status
+   20  git status
+   21  git init
+   22  git status
+   23  git status
+   24  git status
+   25  npm-install-missing
+   26  npm install -g npm-install0missing
+   27  npm install -g npm-install-missing
+   28  npm-install-missing
+   29  history > cmd.txt
+   30  node index.js 
+   31  node index.js 
+   32  node index.js 
+   33  npm install -g nodemon
+   34  nodemon index.
+   35  nodemon index.js
+   36  npm install connect server-static
+   37  npm install connect serve-static
+   38  node index.js 
+   39  node index.js 
+   40  node index.js 
+   41  npm uninstall connect serve-static
+   42  node index.js 
+   43  npm-install-missing
+   44  npm-install-missing
+   45  node index.js 
+   46  nodemon index.
+   47  nodemon index.js 
+   48  git status
+   49  git add .
+   50  git status
+   51  git commit -m'init'
+   52  git status
+   53  git log
+   54  git lg
+   55  git log --oneline --graph
+   56  nodemon
+   57  git checkout -b nodeTutorial
+   58  nodemon
+   59  npm install --save lodash
+   60  nodemon
+   61  npm install --save body-parser
+   62  git status
+   63  git add .
+   64  git status
+   65  git commit -m'Page calling service returning json, using jquery to update dif via ajax'
+   66  git status
+   67  nodemon
+   68  npm install --save lodash
+   69  nodemon
+   70  npm install --save mongoos
+   71  npm install --save mongoose
+   72  nodemon
+   73  npm install -g node-inspector
+   74  node-debug index.js
+   75  node-debug index.js
+   76  node-debug index.js
+   77  node-debug index.js
+   78  nodemon
+   79  nodemon
+   80  npm  install -g mongodb
+   81  mongod
+   82  mongo
+   83  mongod
+   84  exit
+   85  cd /c/Users/benca/OneDrive/Node/
+   86  nodemon
+   87  node-inspector index.js
+   88  node-inspector -o index.js
+   89  history >cmd.txt
+   90  node debug script.js
+   91  node-debug script.js
+   92  node-debug index.hs
+   93  node-debug index.js
+   94  node-debug index.js
+   95  git status
+   96  history > cmd.txt
