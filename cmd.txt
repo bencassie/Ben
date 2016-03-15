@@ -1,0 +1,22 @@
+    1  npm
+    2  cd /c/Users/benca/OneDrive/Node/
+    3  npm init -y
+    4  touch index.js
+    5  node -v
+    6  node
+    7  node index.js 
+    8  node index.js 
+    9  node index.js 
+   10  npm install --save express
+   11  touch .gitignore
+   12  guit status
+   13  git status
+   14  git init
+   15  git status
+   16  git status
+   17  git status
+   18  npm-install-missing
+   19  npm install -g npm-install0missing
+   20  npm install -g npm-install-missing
+   21  npm-install-missing
+   22  history > cmd.txt
