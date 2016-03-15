@@ -8,10 +8,11 @@
 		function Init()
 		{
             $.ajax({
-            	url:'./hello',
+            	url:'/hello',
             	dataType: 'json',
             	success: function(data, status, xhr) {
-            		$('#outputDiv').text(JSON.stringify(data));
+            		//$('#outputDiv').text(JSON.stringify(data));
+            		$('#outputDiv').text(data.hello);
             	},
             	error: function(xhr, status, error) {
             		alert('error occured: ' + status);
