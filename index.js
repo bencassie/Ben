@@ -18,7 +18,7 @@ var cats = require('./cat.js')(app);
 
 var report = require('./report.js')(app);
 
-var server = app.listen(3000, function() {
+var server = app.listen(80, function() {
 	console.log('Server running');
 });
 
