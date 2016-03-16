@@ -7,14 +7,14 @@
 		function Init()
 		{
             $.ajax({
-            	url:'http://ben.com:3000/cat',
+            	url:'/cat',
             	dataType: 'json',
             	success: function(data, status, xhr) {
             		$('#outputDiv').text(JSON.stringify(data));
             		//$('#outputDiv').text(data);
             	},
             	error: function(xhr, status, error) {
-            		alert('error occured: ' + status);
+            		$('#outputDiv').text('error occured: ' + status);
             	}
             });            
 		}
