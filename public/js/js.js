@@ -7,7 +7,7 @@
 		function Init()
 		{
             $.ajax({
-            	url:'/cat',
+            	url:'/report/5G/2016-03-16',
             	dataType: 'json',
             	success: function(data, status, xhr) {
             		$('#outputDiv').text(JSON.stringify(data));
@@ -16,7 +16,8 @@
             	error: function(xhr, status, error) {
             		$('#outputDiv').text('error occured: ' + status);
             	}
-            });            
+            }); 
+            var a = 1;           
 		}
 		// var b = $.parseJSON('{"name":"ben"}');
 		// undefined
