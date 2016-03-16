@@ -1,4 +1,3 @@
-/// <reference path="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js/>
  $(function() {
 			Init();
 		})
@@ -8,7 +7,7 @@
 		function Init()
 		{
             $.ajax({
-            	url:'/cat',
+            	url:'http://ben.com:3000/cat',
             	dataType: 'json',
             	success: function(data, status, xhr) {
             		$('#outputDiv').text(JSON.stringify(data));
