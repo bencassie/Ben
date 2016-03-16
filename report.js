@@ -5,10 +5,10 @@ var Report = require('./models/report.js');
 
 getActions = function(state) {
     var transitions = {
-        start : ['review', 'reject'],
-        review : ['reject','addCommentary','approve'],
+        preparing : ['review', 'reject'],
+        review : ['preparing', 'reject','addCommentary','approve'],
         addCommentary : ['addCommentary', 'review'],
-        approve : ['accept','reject'],
+        approve : ['accept','review', 'reject'],
         accept : [],
         reject : []
     }
@@ -37,7 +37,8 @@ module.exports = function(app) {
                 if (report) {
                         callback(null, report);
                     } else {
-                        var newReport = new Report({'name' : req.params.name , 'cob' : req.params.cob, 'state' : 'start' });
+                        var newReport = new Report({'name' : req.params.name , 'cob' : req.params.cob, 'state' : 'preparing' });
+                        newReport.actions = getActions(newReport.state);
                         newReport.save(function(err) {
                             if (err) {
                                 res.json({info: 'error during save report', error: err});
@@ -50,10 +51,35 @@ module.exports = function(app) {
         ,
             // Assign transitions
             function(report, callback) {
-                var actions = getActions(report.state);
-                _.merge(report, { 'actions' : actions });
                 res.json({info: 'ok', data: report});    
             }            
         ]);
+    });
+
+    /* Update */
+    app.put('/report/:id', function (req, res) {
+        Report.findById(req.params.id, function(err, report) {
+            if (err) {
+                res.json({info: 'error during find report', error: err});
+            };
+            if (report) {                
+                var actions = getActions(req.body.state);
+                if (actions != null) {
+                    report.state = req.body.state;
+                    report.actions = actions;
+                    report.save(function(err) {
+                        if (err) {
+                            res.json({info: 'error during report update', error: err});
+                        };
+                        res.json({info: 'report updated successfully', data : report});
+                    });
+                } else {
+                    res.json({error: 'invalid transition', requestedState : req.body.state, data : report});
+                }
+            } else {
+                res.json({info: 'report not found'});
+            }
+
+        });
     });
 };
