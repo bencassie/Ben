@@ -51,7 +51,7 @@ module.exports = function(app) {
         ,
             // Assign transitions
             function(report, callback) {
-                res.json({info: 'ok', data: report});    
+                res.json({info: 'ok', report: report});    
             }            
         ]);
     });
@@ -70,10 +70,10 @@ module.exports = function(app) {
                         if (err) {
                             res.json({info: 'error during report update', error: err});
                         };
-                        res.json({info: 'report updated successfully', data : report});
+                        res.json({info: 'report updated successfully', report : report});
                     });
                 } else {
-                    res.json({error: 'invalid transition', requestedState : req.body.state, data : report});
+                    res.json({error: 'invalid transition', requestedState : req.body.state, report : report});
                 }
             }
 
