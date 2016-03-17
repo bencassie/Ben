@@ -59,10 +59,9 @@ module.exports = function(app) {
     /* Update */
     app.put('/report/:id', function (req, res) {
         Report.findById(req.params.id, function(err, report) {
-            if (err) {
+            if (err | !report) {
                 res.json({info: 'error during find report', error: err});
-            };
-            if (report) {                
+            } else {                
                 var actions = getActions(req.body.state);
                 if (actions != null) {
                     report.state = req.body.state;
@@ -76,8 +75,6 @@ module.exports = function(app) {
                 } else {
                     res.json({error: 'invalid transition', requestedState : req.body.state, data : report});
                 }
-            } else {
-                res.json({info: 'report not found'});
             }
 
         });
