@@ -1,6 +1,10 @@
 // Set up express
 var express = require('express');
 var app = express();
+// cors
+var cors = require('cors');
+app.use(cors());
+app.options('*', cors());
 // Set up mongo
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cats');

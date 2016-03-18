@@ -2,6 +2,7 @@ var _ = require('lodash');
 var async = require('async');
 
 var Report = require('./models/report.js');
+var cors = require('cors');
 
 getActions = function(state) {
     var transitions = {
@@ -16,9 +17,8 @@ getActions = function(state) {
 }
 
 module.exports = function(app) {
-
     /* Get by report/:name/:cob */
-    app.get('/report/:name/:cob', function (req, res) {
+    app.get('/report/:name/:cob', cors(), function (req, res) {
         async.waterfall(
         [
             // Find
@@ -57,7 +57,7 @@ module.exports = function(app) {
     });
 
     /* Update */
-    app.put('/report/:id', function (req, res) {
+    app.put('/report/:id', cors(), function (req, res) {
         Report.findById(req.params.id, function(err, report) {
             if (err | !report) {
                 res.json({info: 'error during find report', error: err});
