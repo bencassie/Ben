@@ -1,41 +1,51 @@
  $(function() {
+    refreshWorkflow();    
+    });
+    
+    refreshWorkflow = function() {
         $.ajax({
             url:'http://ben.db.com/report/5G/2016-03-16',
             dataType: 'json',
             success: function(data, status, xhr) {
-                refreshWorkflow(data)
-                // var output = JSON.stringify(data) + 'Name = ' + data.report.name;
-                // $('#outputDiv').text(output);
-                // $.ajax({
-                //     url: 'http://ben.db.com/report/' + data.report._id,
-                //     dataType: 'json',
-                //     type: 'put',
-                //     data: {"state":"review"},                    
-                //     success: function(data, status, xhr) {
-                //         $('#outputDiv').text(output + JSON.stringify(data) + 'Name = ' + data.report.name);
-                //         //$('#outputDiv').text(data);
-                //     },
-                //     error: function(xhr, status, error) {
-                //         $('#outputDiv').text('error occured: ' + status);
-                //     }
-                // }); 
+                addWorkflowButtons(data)
+            },
+            error: function(xhr, status, error) {
+                $('#header').text('error occured: ' + status);
+            }
+        });        
+    }
+    
+    addWorkflowButtons = function(data) {
+        $('#_id').text(data.report._id).hide();
+        $('#header').html("<h1>" + data.report.name + " - " + data.report.cob + "</h1>" +
+            "<h2>" + data.report.state + "</h2>");
+        $("#workflow ul li").remove();
+        data.report.actions.forEach(function(action) {
+           $("#workflow ul").append("<span class='workflowAction'" +
+           "id='action" + action + 
+           "' action='" + action + "'><li class='workflowLineItem'><a>" + action + "</a></li></span>");
+        });
+        
+        $('.workflowAction').on('click', function(e,a) {
+            transition(this.attributes.action.value);
+        });
+    }
+    
+    transition = function(targetState) {
+        $.ajax({
+            url: 'http://ben.db.com/report/' + $('#_id').text(),
+            dataType: 'json',
+            type: 'put',
+            data: {"state": targetState},                    
+            success: function(data, status, xhr) {
+                addWorkflowButtons(data);
+                //$('#outputDiv').text(output + JSON.stringify(data) + 'Name = ' + data.report.name);
+                //$('#outputDiv').text(data);
             },
             error: function(xhr, status, error) {
                 $('#outputDiv').text('error occured: ' + status);
             }
-        }); 
-        
-        var a = 1;           
-    });
-    
-    refreshWorkflow = function(data) {
-        data.report.actions.forEach(function(action) {
-           $("#workflow ul").append("<span class='workflowAction' id='action" + action + "' action='" + action + "'><li class='workflowLineItem'><a>" + action + "</a></li></span>");
-        });
-        
-        $('.workflowAction').on('click', function(e,a) {
-            alert(this.attributes.action.value);
-        });
+        });         
     }
     // var b = $.parseJSON('{"name":"ben"}');
     // undefined
