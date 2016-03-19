@@ -39,8 +39,6 @@
             data: {"state": targetState},                    
             success: function(data, status, xhr) {
                 addWorkflowButtons(data);
-                //$('#outputDiv').text(output + JSON.stringify(data) + 'Name = ' + data.report.name);
-                //$('#outputDiv').text(data);
             },
             error: function(xhr, status, error) {
                 $('#outputDiv').text('error occured: ' + status);

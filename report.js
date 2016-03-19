@@ -14,8 +14,8 @@ module.exports = function(app) {
             Review: ['Prepare', 'Reject', 'Add Commentary', 'Approve'],
             'Add Commentary': ['Add Commentary', 'Review'],
             Approve: ['Accept', 'Review', 'Reject'],
-            Accept: [],
-            Reject: []
+            Accept: ['Reject'],
+            Reject: ['Prepare']
         }
         return transitions[state];
     }
