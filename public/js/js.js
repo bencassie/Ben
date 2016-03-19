@@ -19,7 +19,7 @@
         $('#_id').text(data.report._id).hide();
         $('#header').html("<h1>" + data.report.name + " - " + data.report.cob + "</h1>" +
             "<h2>" + data.report.state + "</h2>");
-        $("#workflow ul li").remove();
+        $(".workflowAction").remove();
         data.report.actions.forEach(function(action) {
            $("#workflow ul").append("<span class='workflowAction'" +
            "id='action" + action + 
