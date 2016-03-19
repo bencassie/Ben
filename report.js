@@ -51,10 +51,16 @@ module.exports = function(app) {
         ,
             // Assign transitions
             function(report, callback) {
-                res.json({info: 'ok', report: report});    
+                //if a json callback was provided in the query string
+                var response = {info: 'ok', report: report};
+               
+                res.jsonp(response);    
             }            
         ]);
     });
+
+
+
 
     /* Update */
     app.put('/report/:id', function (req, res) {
