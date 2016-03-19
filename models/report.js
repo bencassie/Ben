@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
+var m = require('mongoose');
 
-var reportSchema = mongoose.Schema({
+var reportSchema = m.Schema({
 	name: String,
 	cob: String,
     state: String,
     actions:[]
 });
 
-module.exports = mongoose.model('Report', reportSchema);
+module.exports = m.model('Report', reportSchema);

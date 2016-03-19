@@ -28,6 +28,7 @@
                 $('#outputDiv').text('error occured: ' + status);
             }
         }); 
+        
         var a = 1;           
     }
     // var b = $.parseJSON('{"name":"ben"}');
