@@ -1,22 +1,25 @@
-var _ = require('lodash');
-var async = require('async');
-
-var Report = require('./models/report.js');
-var cors = require('cors');
-
-getActions = function(state) {
-    var transitions = {
-        preparing: ['review', 'reject'],
-        review: ['preparing', 'reject', 'addCommentary', 'approve'],
-        addCommentary: ['addCommentary', 'review'],
-        approve: ['accept', 'review', 'reject'],
-        accept: [],
-        reject: []
-    }
-    return transitions[state];
-}
-
 module.exports = function(app) {
+    var _ = require('lodash');
+    var async = require('async');
+    var Report = require('./models/report.js');
+    // cors
+    var cors = require('cors');
+    app.use(cors());
+    app.options('*', cors());
+
+    /* BPM */
+    getActions = function(state) {
+        var transitions = {
+            Prepare: ['Review', 'Reject'],
+            Review: ['Prepare', 'Reject', 'Add Commentary', 'Approve'],
+            'Add Commentary': ['Add Commentary', 'Review'],
+            Approve: ['Accept', 'Review', 'Reject'],
+            Accept: [],
+            Reject: []
+        }
+        return transitions[state];
+    }
+        
     /* Get by report/:name/:cob */
     app.get('/report/:name/:cob', cors(), function(req, res) {
         async.waterfall(
@@ -37,7 +40,7 @@ module.exports = function(app) {
                     if (report) {
                         callback(null, report);
                     } else {
-                        var newReport = new Report({ 'name': req.params.name, 'cob': req.params.cob, 'state': 'preparing' });
+                        var newReport = new Report({ 'name': req.params.name, 'cob': req.params.cob, 'state': 'Prepare' });
                         newReport.actions = getActions(newReport.state);
                         newReport.save(function(err) {
                             if (err) {
