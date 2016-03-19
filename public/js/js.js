@@ -30,7 +30,7 @@
     
     refreshWorkflow = function(data) {
         data.report.actions.forEach(function(action) {
-           $("#workflow ul").append("<span class='workflowAction' id='action" + action + "' action='" + action + "'><li><a>" + action + "</a></li></span>");
+           $("#workflow ul").append("<span class='workflowAction' id='action" + action + "' action='" + action + "'><li class='workflowLineItem'><a>" + action + "</a></li></span>");
         });
         
         $('.workflowAction').on('click', function(e,a) {

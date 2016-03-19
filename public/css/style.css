@@ -9,17 +9,17 @@ body{
     
 }
 
-ul {
+#workflowMenuList {
     font-family: sans-serif;
     position:relative;
     left:-40px;
 }
 
-li {
+.workflowLineItem  {
     display: inline;
 }
 
-li a {
+.workflowAction a {
     display: inline-block;
     padding: 10px;
     margin-right: 0px;
@@ -32,7 +32,7 @@ li a {
     border-bottom-right-radius: 10px;
 }
 
-li a:hover,
-li a.active {
+.workflowAction a:hover,
+.workflowAction a.active {
     background: #a6a8D8;
 }
