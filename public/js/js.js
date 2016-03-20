@@ -33,7 +33,7 @@
     
     transition = function(targetState) {
         $.ajax({
-            url: 'http://localhost/report/' + $('#_id').text(),
+            url: 'http://localhost/report/' + $('#_id').text(), 
             dataType: 'json',
             type: 'put',
             data: {"state": targetState},                    
