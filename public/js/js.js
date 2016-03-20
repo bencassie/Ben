@@ -4,7 +4,7 @@
     
     refreshWorkflow = function() {
         $.ajax({
-            url:'http://ben.db.com/report/5G/2016-03-16',
+            url:'http://localhost/report/5G/2016-03-16',
             dataType: 'json',
             success: function(data, status, xhr) {
                 addWorkflowButtons(data)
@@ -33,7 +33,7 @@
     
     transition = function(targetState) {
         $.ajax({
-            url: 'http://ben.db.com/report/' + $('#_id').text(),
+            url: 'http://localhost/report/' + $('#_id').text(),
             dataType: 'json',
             type: 'put',
             data: {"state": targetState},                    
